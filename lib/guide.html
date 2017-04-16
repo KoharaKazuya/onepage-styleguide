@@ -1,0 +1,20 @@
+<!doctype html>
+<meta charset="utf-8">
+<style>{{ css }}</style>
+<script>{{ js }}</script>
+<script id="doc-sample-style" type="text/x-doc-sample-style">{{ encoded-css }}</script>
+
+<div class="two-pane">
+  <ul class="doc-list">{{ doc-items }}</ul>
+  <div class="preview">
+    <ul class="devices">
+      <li class="device js-device-phone"><span class="icon-phone"></span></li>
+      <li class="device js-device-tablet"><span class="icon-tablet"></span></li>
+      <li class="device js-device-desktop"><span class="icon-desktop"></span></li>
+      <li class="device js-device-fullscreen"><span class="icon-fullscreen"></span></li>
+    </ul>
+    <div class="preview-screen">
+      <iframe class="doc-sample" seamless sandbox="allow-scripts allow-same-origin"></iframe>
+    </div>
+  </div>
+</div>

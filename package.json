@@ -1,0 +1,24 @@
+{
+  "name": "onepage-styleguide",
+  "version": "1.0.0",
+  "bin": {
+    "opsg": "./bin/cli.js"
+  },
+  "dependencies": {
+    "commander": "^2.9.0",
+    "marked": "^0.3.6",
+    "postcss": "^5.2.16"
+  },
+  "devDependencies": {
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb-base": "^11.1.3",
+    "eslint-plugin-import": "^2.2.0"
+  },
+  "license": "MIT",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "demo": "node ./lib/cli.js ./lib/guide.css",
+    "lint": "eslint ./lib"
+  }
+}

@@ -1,0 +1,215 @@
+/*
+  全要素の設定
+ */
+* {
+  box-sizing: border-box;
+}
+
+/*
+  リスト要素のスタイルリセット
+ */
+ul,
+ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/*
+  画面全体の設定
+
+  サイドバーの高さを画面全体にするため
+ */
+html,
+body,
+.two-pane {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/*
+  サイドバーレイアウト
+ */
+.two-pane {
+  display: flex;
+}
+
+.two-pane > * {
+  flex: 1 1 auto;
+}
+
+/*
+  モジュールドキュメント一覧
+
+  <ul class="doc-list">
+    <li>Test 1</li>
+    <li>Test 2</li>
+  </ul>
+ */
+.doc-list {
+  background-color: #323;
+  flex: 0 0 320px;
+  height: 100%;
+  overflow: scroll;
+}
+
+/*
+  モジュールドキュメントアイテム
+
+  親要素として .doc-list が必要
+
+  <ul class="doc-list">
+    <li class="doc-item">Item A</li>
+    <li class="doc-item">Item B</li>
+  </ul>
+ */
+.doc-item {
+  border-bottom: solid 1px #1E141E;
+  box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.1);
+  color: rgba(234, 224, 234, 0.5);
+  cursor: pointer;
+  font-size: 12px;
+  padding: 1em;
+}
+
+/*
+  モジュールドキュメントアイテム (ホバー、アクティブ時)
+
+  <ul class="doc-list">
+    <li class="doc-item"><div class="doc-item-selector">Item A</div></li>
+    <li class="doc-item"><div class="doc-item-selector">Item B</div></li>
+  </ul>
+
+  <script>
+    document.querySelectorAll('.doc-item').forEach(function(i) {
+      i.addEventListener('click', function() {
+        document.querySelectorAll('.active').forEach(function(a) {
+          a.classList.remove('active');
+        });
+        i.classList.add('active');
+      });
+    });
+  </script>
+ */
+.doc-item.active .doc-item-selector,
+.doc-item:hover .doc-item-selector {
+  color: rgba(234, 224, 234, 1);
+}
+
+.doc-item-selector {
+  font-size: 20px;
+  margin-bottom: 0.5em;
+}
+
+/*
+  デバイス一覧
+ */
+.devices {
+  display: flex;
+  justify-content: center;
+}
+
+/*
+  デバイスアイコン
+
+  <div class="device"><span class="icon-desktop"></span></div>
+ */
+.device {
+  color: rgba(0, 0, 0, 0.3);
+  font-size: 26px;
+  padding: 0.2em 0.5em;
+  cursor: pointer;
+}
+
+/*
+  デバイスアイコン (ホバー時)
+
+  <div class="device active"><span class="icon-desktop"></span></div>
+ */
+.device.active,
+.device:hover {
+  color: rgba(0, 0, 0, 1);
+}
+
+/*
+  プレビュー領域
+
+  <div class="preview">
+    <div class="devices"></div>
+    <div class="preview-srcreen"></div>
+  </div>
+ */
+.preview {
+  display: flex;
+  flex-direction: column;
+}
+
+.preview-screen {
+  flex: 1 0 auto;
+  position: relative;
+}
+
+/*
+  ドキュメントのサンプル
+
+  iframe の枠の消し方については
+  [こちら](http://benvinegar.github.io/seamless-talk/#/22) を参考
+
+  中央揃えのため、margin および transform を使用する
+  */
+.doc-sample {
+  background-color: transparent;
+  border: 0px none transparent;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  max-height: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  padding: 0px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* 以下、アイコンフォント用 */
+@font-face {
+  font-family: 'devices';
+  /*
+   * Copyright 2017 Google
+   *     https://github.com/google/material-design-icons
+   */
+  src: url(data:application/x-font-woff;charset=utf-8;base64,d09GRgABAAAAAAXIAAsAAAAABXwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABPUy8yAAABCAAAAGAAAABgDxIClGNtYXAAAAFoAAAAbAAAAGzJPccJZ2FzcAAAAdQAAAAIAAAACAAAABBnbHlmAAAB3AAAAZQAAAGUiyGG1mhlYWQAAANwAAAANgAAADYNJaw7aGhlYQAAA6gAAAAkAAAAJAeYA8lobXR4AAADzAAAACAAAAAgFgACAGxvY2EAAAPsAAAAEgAAABIBcgEEbWF4cAAABAAAAAAgAAAAIAANACJuYW1lAAAEIAAAAYYAAAGGmUoJ+3Bvc3QAAAWoAAAAIAAAACAAAwAAAAMDmgGQAAUAAAKZAswAAACPApkCzAAAAesAMwEJAAAAAAAAAAAAAAAAAAAAARAAAAAAAAAAAAAAAAAAAAAAQAAA5dADwP/AAEADwABAAAAAAQAAAAAAAAAAAAAAIAAAAAAAAwAAAAMAAAAcAAEAAwAAABwAAwABAAAAHAAEAFAAAAAQABAAAwAAAAEAIOMM4yXjL+XQ//3//wAAAAAAIOMM4yXjL+XQ//3//wAB/+Mc+BzgHNcaNwADAAEAAAAAAAAAAAAAAAAAAAAAAAEAAf//AA8AAQAAAAAAAAAAAAIAADc5AQAAAAABAAAAAAAAAAAAAgAANzkBAAAAAAEAAAAAAAAAAAACAAA3OQEAAAAAAgAqAAED1gNVAAMAGwAAAREhEQEyFhURFAYjIRUzFSE1MzUhIiY1ETQ2MwOA/QADACI0MyP+1lT+rFT+1iI0MyMBAQIA/gACVDIi/gAjM1ZUVFYzIwIAIjIAAAADANb/1QMAA4EAAwAPAB8AACURIREXMjY1NCYjIgYVFBYTMhYVERQGIyEiJjURNDYzAqr+gMAbJSUbGyUlxys/Piz+qis/PiyrAlb9qqolGxslJRsbJQOAQSv9LCxAQCwC1CtBAAAAAAIAKgBVA9YDAQADABMAACURIREBMhYVAxQGIyEiJjURNDYzAyr9rAKqIjQCMSP9ACI0MyOrAgD+AAJWNCL+ACMzMyMCACI0AAQA1gCBAyoC1QAFAAsAEQAXAAABMxUjNSMTNTMVIzUBNTMVIxUdATMVIzUCVtRUgIBU1P6A1ICA1ALV1ID+VIDUVAEs1FSArIBU1AABAAAAAAAA7D/6LV8PPPUACwQAAAAAANUYs/QAAAAA1Riz9AAA/9UD1gOBAAAACAACAAAAAAAAAAEAAAPA/8AAAAQAAAAAAAPWAAEAAAAAAAAAAAAAAAAAAAAIBAAAAAAAAAAAAAAAAgAAAAQAACoEAADWBAAAKgQAANYAAAAAAAoAFAAeAEwAgACkAMoAAAABAAAACAAgAAQAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAADgCuAAEAAAAAAAEABwAAAAEAAAAAAAIABwBgAAEAAAAAAAMABwA2AAEAAAAAAAQABwB1AAEAAAAAAAUACwAVAAEAAAAAAAYABwBLAAEAAAAAAAoAGgCKAAMAAQQJAAEADgAHAAMAAQQJAAIADgBnAAMAAQQJAAMADgA9AAMAAQQJAAQADgB8AAMAAQQJAAUAFgAgAAMAAQQJAAYADgBSAAMAAQQJAAoANACkaWNvbW9vbgBpAGMAbwBtAG8AbwBuVmVyc2lvbiAxLjAAVgBlAHIAcwBpAG8AbgAgADEALgAwaWNvbW9vbgBpAGMAbwBtAG8AbwBuaWNvbW9vbgBpAGMAbwBtAG8AbwBuUmVndWxhcgBSAGUAZwB1AGwAYQByaWNvbW9vbgBpAGMAbwBtAG8AbwBuRm9udCBnZW5lcmF0ZWQgYnkgSWNvTW9vbi4ARgBvAG4AdAAgAGcAZQBuAGUAcgBhAHQAZQBkACAAYgB5ACAASQBjAG8ATQBvAG8AbgAuAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==) format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'devices' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-desktop:before {
+  content: "\e30c";
+}
+.icon-fullscreen:before {
+  content: "\e5d0";
+}
+.icon-phone:before {
+  content: "\e325";
+}
+.icon-tablet:before {
+  content: "\e32f";
+}
